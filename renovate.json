@@ -5,8 +5,11 @@
   "github-actions": { "enabled": false },
   "regexManagers": [
     {
-      "fileMatch": ["^Dockerfile$"],
-      "matchStrings": ["ARG PI_VERSION=(?<currentValue>[\\d.]+)"],
+      "fileMatch": ["^Dockerfile$", "^README\\.md$"],
+      "matchStrings": [
+        "ARG PI_VERSION=(?<currentValue>[\\d.]+)",
+        "pi--coding--agent-(?<currentValue>[\\d.]+)-blueviolet"
+      ],
       "depNameTemplate": "@mariozechner/pi-coding-agent",
       "datasourceTemplate": "npm"
     }
