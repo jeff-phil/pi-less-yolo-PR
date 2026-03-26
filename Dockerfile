@@ -1,6 +1,6 @@
-ARG PI_VERSION=0.61.0
+ARG PI_VERSION=0.62.0
 
-FROM cgr.dev/chainguard/node:latest-dev@sha256:e927b4c376506296d78e45a9702d41aeeb86a4c694b8af5afe6a1cb1f34f064c
+FROM cgr.dev/chainguard/node:latest-dev@sha256:8e17971db461cd77228a693db4e25f15105f73c664fc8886c360cbc76428eff0
 
 # Install git, tmux, curl, and ca-certificates via Wolfi's apk.
 # Node.js (LTS) and npm are pre-installed in the base image.
@@ -12,7 +12,7 @@ RUN apk add --no-cache \
         tmux
 
 # Install pi globally
-RUN npm install -g @mariozechner/pi-coding-agent@${PI_VERSION}
+RUN npm install -g "@mariozechner/pi-coding-agent@${PI_VERSION}"
 
 # Install mise and uv
 RUN curl -fsSL https://mise.run \
