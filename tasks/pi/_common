@@ -12,7 +12,7 @@ docker image inspect "${PI_IMAGE}" > /dev/null 2>&1 || mise run pi:build
 #   --no-new-privileges        prevent setuid binaries from gaining privileges.
 #
 # Mounts:
-#   $(pwd):/workspace          current directory as the working directory.
+#   $(pwd):$(pwd)              current directory, mounted at its real host path.
 #   ~/.pi/agent:/pi-agent      pi config, credentials, sessions, and managed
 #                               binaries from the host. PI_CODING_AGENT_DIR
 #                               tells pi to use this path instead of deriving
