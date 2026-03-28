@@ -4,6 +4,8 @@
 [![pi version](https://img.shields.io/badge/pi--coding--agent-0.63.1-blueviolet)](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent)
 [![Base Image](https://img.shields.io/badge/base%20image-chainguard%2Fnode-F4835E?logo=docker)](https://images.chainguard.dev/directory/image/node/overview)
 [![Dependabot](https://img.shields.io/badge/Dependabot-enabled-brightgreen?logo=dependabot)](https://github.com/cjermain/pi-less-yolo/blob/main/.github/dependabot.yml)
+[![mise](https://mise-versions.jdx.dev/badge.svg)](https://mise.jdx.dev)
+[![CI](https://img.shields.io/github/actions/workflow/status/cjermain/pi-less-yolo/ci.yml?style=flat&label=CI)](https://github.com/cjermain/pi-less-yolo/actions/workflows/ci.yml)
 
 > Run [pi-coding-agent](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent) (a multi-provider AI coding agent supporting Claude, GPT, Gemini, and [many more](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent#providers--models)) inside an isolated Docker container — limiting the blast radius of agent-driven changes to your mounted working directory.
 
