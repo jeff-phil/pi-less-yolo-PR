@@ -5,6 +5,16 @@
   "github-actions": { "enabled": false },
   "regexManagers": [
     {
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "uv python install (?<currentValue>[\\d.]+)"
+      ],
+      "depNameTemplate": "python",
+      "datasourceTemplate": "github-tags",
+      "packageNameTemplate": "python/cpython",
+      "extractVersionTemplate": "^v(?<version>.*)$"
+    },
+    {
       "fileMatch": ["^Dockerfile$", "^README\\.md$"],
       "matchStrings": [
         "ARG PI_VERSION=(?<currentValue>[\\d.]+)",
