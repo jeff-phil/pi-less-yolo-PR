@@ -8,3 +8,4 @@ mise run pi:build
 echo ""
 echo "Smoke test..."
 docker run --rm pi-less-yolo:latest --version
+docker run --rm pi-less-yolo:latest bash -c 'python3 --version'
