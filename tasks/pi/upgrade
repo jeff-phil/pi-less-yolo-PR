@@ -10,7 +10,7 @@ docker image inspect "${PI_IMAGE}" > /dev/null 2>&1 || {
   exit 1
 }
 
-CURRENT=$(grep '^ARG PI_VERSION=' "${DOCKERFILE}" | cut -d'=' -f2)
+CURRENT=$(perl -ne 'print $1 if /pi-coding-agent@([\d.]+)/' "${DOCKERFILE}")
 LATEST=$(docker run --rm --entrypoint npm "${PI_IMAGE}" view @mariozechner/pi-coding-agent version)
 
 if [[ "${CURRENT}" == "${LATEST}" ]]; then
@@ -22,6 +22,6 @@ echo "Upgrading pi: ${CURRENT} → ${LATEST}"
 
 # perl -pi -e is cross-platform (macOS and Linux); avoids sed -i / sed -i ''
 # incompatibility.
-perl -pi -e "s/^ARG PI_VERSION=.*/ARG PI_VERSION=${LATEST}/" "${DOCKERFILE}"
+perl -pi -e "s/pi-coding-agent\@[\d.]+/pi-coding-agent\@${LATEST}/" "${DOCKERFILE}"
 
 mise run pi:build

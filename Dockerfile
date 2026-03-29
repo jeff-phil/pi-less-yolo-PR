@@ -1,5 +1,3 @@
-ARG PI_VERSION=0.63.2
-
 FROM cgr.dev/chainguard/node:latest-dev@sha256:4ab907c3dccb83ebfbf2270543da99e0241ad2439d03d9ac0f69fe18497eb64a
 
 # openssh-client: ssh binary for git-over-SSH (PI_SSH_AGENT=1) and ssh-add.
@@ -24,7 +22,7 @@ RUN uv python install 3.14.3 \
     && ln -s "$(uv python find 3.14.3)" /usr/local/bin/python3
 
 # Install pi globally
-RUN npm install -g "@mariozechner/pi-coding-agent@${PI_VERSION}"
+RUN npm install -g "@mariozechner/pi-coding-agent@0.63.2"
 
 # /home/piuser: world-writable (1777) so any runtime UID can write here.
 # /home/piuser/.ssh: root-owned 755; SSH accepts it and the runtime user can

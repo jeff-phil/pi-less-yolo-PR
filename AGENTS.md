@@ -85,7 +85,7 @@ mise run ci      # lint + docker build + smoke test
 | `mise` | `MISE_VERSION=` in `Dockerfile` | GitHub Releases (`jdx/mise`) |
 | `uv` | `UV_VERSION=` in `Dockerfile` | GitHub Releases (`astral-sh/uv`) |
 | Python | `uv python install <ver>` in `Dockerfile` | GitHub Tags (`python/cpython`) |
-| `@mariozechner/pi-coding-agent` | `ARG PI_VERSION=` in `Dockerfile` and badge in `README.md` | npm |
+| `@mariozechner/pi-coding-agent` | `npm install -g` line in `Dockerfile` and badge in `README.md` | npm |
 
 Both `Dockerfile` and `README.md` must be updated together when pi's version changes (Renovate handles both via the same `matchStrings` list).
 
