@@ -22,7 +22,7 @@ RUN uv python install 3.14.3 \
     && ln -s "$(uv python find 3.14.3)" /usr/local/bin/python3
 
 # Install pi globally
-RUN npm install -g "@mariozechner/pi-coding-agent@0.63.2"
+RUN npm install -g "@mariozechner/pi-coding-agent@0.64.0"
 
 # /home/piuser: world-writable (1777) so any runtime UID can write here.
 # /home/piuser/.ssh: root-owned 755; SSH accepts it and the runtime user can
