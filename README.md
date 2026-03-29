@@ -179,9 +179,9 @@ The agent cannot reach other directories on your host. It can make arbitrary net
 
 ### Read-only mode
 
-`mise run pi:readonly` mounts the project directory read-only and restricts pi to the `read`, `grep`, `find`, and `ls` tools. The agent can answer questions about the codebase but cannot modify files, run shell commands, or write anything to the project directory — enforced at the kernel level via the `:ro` volume mount.
+`mise run pi:readonly` mounts the project directory read-only and restricts pi to the `read`, `grep`, `find`, and `ls` tools. The agent can answer questions about the codebase but cannot write files or run shell commands — enforced at the kernel level via the `:ro` volume mount.
 
-Use this when working with sensitive or untrusted codebases where you want the agent's help without any write access.
+Use it for untrusted or sensitive codebases.
 
 ### Pi packages
 
