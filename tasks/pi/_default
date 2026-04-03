@@ -15,4 +15,12 @@ if [ -n "${TMUX:-}" ]; then
   trap 'tmux set-option -p allow-passthrough off 2>/dev/null || true' EXIT
 fi
 
-docker run "${DOCKER_FLAGS[@]}" "${PI_IMAGE}" "$@"
+PI_ARGS=()
+if [[ -z "${PI_NO_CONTAINER_PROMPT:-}" ]]; then
+  PI_ARGS+=(
+    "--append-system-prompt"
+    "You are running inside a Docker container as a non-root user. No Docker socket, sudo, or system package installation (apk requires root) is available."
+  )
+fi
+
+docker run "${DOCKER_FLAGS[@]}" "${PI_IMAGE}" "${PI_ARGS[@]}" "$@"

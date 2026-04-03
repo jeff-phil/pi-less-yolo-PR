@@ -220,6 +220,10 @@ If `~/.gitconfig` exists on the host it is mounted read-only at startup, so the 
 
 > **Note:** credential helpers referenced in `~/.gitconfig` (e.g. `osxkeychain`, `libsecret`) are not available inside the container. They fail gracefully — git falls back to prompting for credentials.
 
+### Container context prompt
+
+By default pi is told it is running inside a Docker container as a non-root user, and that the Docker socket, sudo, and system package installation are unavailable. This prevents the agent from confidently suggesting commands that will fail. Opt out by setting `PI_NO_CONTAINER_PROMPT=1`.
+
 ### SSH agent forwarding
 
 SSH is **disabled by default**. Set `PI_SSH_AGENT=1` to forward the host SSH agent socket into the container, enabling SSH-based git remotes (`git clone git@github.com:...`) without private keys ever entering the container.

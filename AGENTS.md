@@ -72,7 +72,17 @@ mise run ci      # lint + docker build + smoke test
 - Docker security flags (`--cap-drop=ALL`, `--security-opt=no-new-privileges`, `--user $(id -u):$(id -g)`) are non-negotiable. Do not weaken them.
 - `--network=host` appears in `pi:build` on Linux (DNS workaround) and in runtime `DOCKER_FLAGS` when `PI_LOCAL_MODELS=1` is set. It must not appear unconditionally in runtime `DOCKER_FLAGS`.
 - When adding a new provider API key: add it to the `PI_ENV_VARS` array in `tasks/pi/_docker_flags` **and** the auth table in `README.md`.
-- `PI_NO_GITCONFIG=1` suppresses the automatic `~/.gitconfig` read-only mount. `PI_SSH_AGENT=1` enables SSH agent socket forwarding and also mounts `~/.ssh/known_hosts` and `~/.ssh/config` read-only. `PI_LOCAL_MODELS=1` enables `--network=host`, sharing the host network namespace so that local model servers (Ollama, LM Studio, vLLM) are reachable at their native `localhost` URLs without reconfiguration. On macOS Docker Desktop `localhost` inside the container resolves to the Docker VM, not the Mac — use `host.docker.internal` as the `baseUrl` in `models.json` instead (see README). `PI_MEMORY`, `PI_CPUS`, and `PI_PIDS_LIMIT` set `--memory`, `--cpus`, and `--pids-limit` respectively (e.g. `PI_MEMORY=4g`). All are host-side control variables consumed by `_docker_flags` before `docker run`; they do not go in `PI_ENV_VARS` and are not forwarded into the container.
+- Host-side control variables consumed by `_docker_flags`; not forwarded into the container via `PI_ENV_VARS`:
+
+  | Variable | Effect |
+  |---|---|
+  | `PI_NO_GITCONFIG=1` | Suppress `~/.gitconfig` read-only mount |
+  | `PI_NO_CONTAINER_PROMPT=1` | Suppress the container-context `--append-system-prompt` (no Docker socket, sudo, or root) |
+  | `PI_SSH_AGENT=1` | Forward SSH agent socket; also mounts `~/.ssh/known_hosts` and `~/.ssh/config` read-only |
+  | `PI_LOCAL_MODELS=1` | Add `--network=host` so local model servers are reachable at `localhost`; on macOS Docker Desktop use `host.docker.internal` instead |
+  | `PI_MEMORY` | Set `--memory` (e.g. `4g`) |
+  | `PI_CPUS` | Set `--cpus` |
+  | `PI_PIDS_LIMIT` | Set `--pids-limit` |
 - Use `perl -pi -e` for in-place file edits (cross-platform; avoids `sed -i` / `sed -i ''` incompatibility between Linux and macOS).
 
 ## Automated dependency updates
