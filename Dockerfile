@@ -21,7 +21,9 @@ rm /tmp/mise-install.sh.sig /tmp/mise-install.sh
 apk del gpg gpg-agent
 EOF
 
-ENV MISE_DATA_DIR=/usr/local/share/mise
+# ARG (not ENV): available during build, not baked in. At runtime mise defaults
+# to ~/.local/share/mise, which the container user can write to.
+ARG MISE_DATA_DIR=/usr/local/share/mise
 
 # Install uv via mise and expose uv and uvx on PATH.
 RUN <<'EOF'
