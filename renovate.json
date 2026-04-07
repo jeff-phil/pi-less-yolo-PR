@@ -1,13 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
-  "docker": { "enabled": false },
   "github-actions": { "enabled": false },
   "minimumReleaseAge": "3 days",
   "packageRules": [
     {
-      "depNames": ["@mariozechner/pi-coding-agent"],
-      "minimumReleaseAge": "0 days"
+      "matchCategories": ["docker"],
+      "enabled": false
+    },
+    {
+      "matchDepNames": ["@mariozechner/pi-coding-agent"],
+      "minimumReleaseAge": null
     }
   ],
   "regexManagers": [
