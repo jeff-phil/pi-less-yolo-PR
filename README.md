@@ -31,7 +31,7 @@ If you use [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Aider,
 ## Prerequisites
 
 - [mise](https://mise.jdx.dev/installing-mise.html) >= 2024.12.0
-- [Docker](https://docs.docker.com/get-docker/) (Desktop on macOS, Engine on Linux) or [Podman](https://podman.io/getting-started/installation) (aliased as `docker`)
+- [Docker](https://docs.docker.com/get-docker/) (Desktop on macOS, Engine on Linux) or [Podman](https://podman.io/getting-started/installation) (via `PI_CONTAINER_RUNTIME=podman` or aliased as `docker`)
 - git
 
 ## Install
